@@ -19,5 +19,8 @@
   "homepage": "https://github.com/koshmar1319/ip-address-tracker#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "leaflet": "^1.7.1"
   }
 }
