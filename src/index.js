@@ -1,18 +1,35 @@
+import { validateIp } from './helpers';
+
 const ipInput = document.querySelector('.search-bar__input');
 const btn = document.querySelector('button');
+
+const ipInfo = document.querySelector('#ip');
+const locationInfo = document.querySelector('#location');
+const timezoneInfo = document.querySelector('#timezone');
+const ispInfo = document.querySelector('#isp');
 
 btn.addEventListener('click', getData);
 ipInput.addEventListener('keydown', handleKey);
 
 function getData() {
-  // проверка данных
-  fetch(`https://geo.ipify.org/api/v2/country?apiKey=at_lgKVw7tQCC4JzT8Sb0zQSit0YtaVA&ipAddress=${ipInput.value}`)
-    .then(response => response.json())
-    .then(console.log)
+  if (validateIp(ipInput.value)) {
+    fetch(`https://geo.ipify.org/api/v2/country?apiKey=at_lgKVw7tQCC4JzT8Sb0zQSit0YtaVA&ipAddress=${ipInput.value}`)
+      .then(response => response.json())
+      .then(setInfo)
+  }
+
 }
 
 function handleKey(e) {
   if (e.key === 'Enter') {
     getData();
   }
+}
+
+function setInfo(mapData) {
+  console.log(mapData);
+  ipInfo.innerText = mapData.ip;
+  locationInfo.innerText = mapData.location.country + ' ' + mapData.location.region;
+  timezoneInfo.innerText = mapData.location.timezone;
+  ispInfo.innerText = mapData.isp;
 }
