@@ -15,7 +15,7 @@
 <p>:white_check_mark: реализовать отображение карты по IP</p>
 <p>:white_check_mark: реализовать адаптив</p>
 
-## Deploying your project
+## Деплой проекта
 
 Проект размещен на сервисе [vercel.com](https://vercel.com/)
 
